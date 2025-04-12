@@ -37,6 +37,7 @@ class _TrackFormState extends State<TrackForm> {
       keyNote: selectedKey,
       scaleType: scaleType,
       progression: degrees,
+      tempo: null, // Tempo is not handled in this form
     );
 
     widget.onSave(newSong);
@@ -105,6 +106,16 @@ class _TrackFormState extends State<TrackForm> {
             controller: TextEditingController(text: degrees),
             onChanged: (value) => degrees = value,
           ),
+          SizedBox(height: 10),
+          Text('Tempo:', style: TextStyle(fontWeight: FontWeight.bold)),
+          TextField(
+            keyboardType: TextInputType.number,
+            decoration: InputDecoration(hintText: 'BPM'),
+            onChanged: (value) {
+              // Handle tempo input
+            },
+          ),
+          SizedBox(height: 10),
           SizedBox(height: 20),
           Center(
             child: ElevatedButton(onPressed: saveForm, child: Text('Save')),
